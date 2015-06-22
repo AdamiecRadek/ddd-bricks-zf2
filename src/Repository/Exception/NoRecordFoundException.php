@@ -5,7 +5,7 @@
  * Time: 11:03
  */
 
-namespace Repository\Exception;
+namespace AdamiecRadek\Repository\Exception;
 
 
 use Exception;

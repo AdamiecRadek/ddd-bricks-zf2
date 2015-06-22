@@ -8,9 +8,9 @@
 namespace AdamiecRadek\Repository\Sql;
 
 
+use AdamiecRadek\Repository\Exception\NoRecordFoundException;
 use AdamiecRadek\Repository\Sql\Exception\InvalidConfigProvidedException;
 use AGmakonts\DddBricks\Repository\AbstractRepository;
-use Repository\Exception\NoRecordFoundException;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\Driver\ResultInterface;
 use Zend\Db\Sql\Select;
@@ -131,9 +131,10 @@ abstract class AbstractSqlRepository extends AbstractRepository
      *
      * @return bool
      */
-    protected function checkConfigForConstructor(array $config = NULL)
+    protected function checkConfigForConstructor(array $config = array())
     {
-        return (NULL !== $config && TRUE === (count($config) > 0) && TRUE === $config[0] instanceof Adapter);
+        return (TRUE === (count($config) > 0) &&
+            TRUE === $config[0] instanceof Adapter);
     }
 
     /**
