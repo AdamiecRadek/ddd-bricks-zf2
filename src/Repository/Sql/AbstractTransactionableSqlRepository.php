@@ -5,7 +5,7 @@
  * Time: 11:06
  */
 
-namespace AdamiecRadek\Repository\Sql;
+namespace AdamiecRadek\DDDBricksZF2\Repository\Sql;
 
 
 use AGmakonts\DddBricks\Repository\TransactionableRepository;

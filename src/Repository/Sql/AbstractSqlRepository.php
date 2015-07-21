@@ -5,11 +5,11 @@
  * Time: 10:59
  */
 
-namespace AdamiecRadek\Repository\Sql;
+namespace AdamiecRadek\DDDBricksZF2\Repository\Sql;
 
 
-use AdamiecRadek\Repository\Exception\NoRecordFoundException;
-use AdamiecRadek\Repository\Sql\Exception\InvalidConfigProvidedException;
+use AdamiecRadek\DDDBricksZF2\Repository\Exception\NoRecordFoundException;
+use AdamiecRadek\DDDBricksZF2\Repository\Sql\Exception\InvalidConfigProvidedException;
 use AGmakonts\DddBricks\Repository\AbstractRepository;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\Driver\ResultInterface;

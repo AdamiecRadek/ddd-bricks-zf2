@@ -5,7 +5,7 @@
  * Time: 11:03
  */
 
-namespace AdamiecRadek\Repository\Exception;
+namespace AdamiecRadek\DDDBricksZF2\Repository\Exception;
 
 
 use Exception;

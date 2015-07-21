@@ -1,22 +1,22 @@
 {
-    "name": "adamiecradek/ddd-bricks-zf2",
-    "description": "This library extends ddd-bricks from AGmakonts and adds to it ZF2 support",
+    "name"             : "adamiecradek/ddd-bricks-zf2",
+    "description"      : "This library extends ddd-bricks from AGmakonts and adds to it ZF2 support",
     "minimum-stability": "stable",
-    "license": "BSD (3-Clause) License",
-    "authors": [
+    "license"          : "BSD (3-Clause) License",
+    "authors"          : [
         {
-            "name": "Adamiec Radek",
+            "name" : "Adamiec Radek",
             "email": "radek@adamiec.it"
         }
     ],
-
-    "require": {
-        "ramsey/uuid":"2.8.*",
-        "agmakonts/ddd-bricks" : "1.0.*",
-        "agmakonts/stl" : "1.0.*",
-        "zendframework/zendframework": "2.4.*"
+    "require"          : {
+        "adamiecradek/ddd-bricks-zf2-event": "1.0.1",
+        "agmakonts/ddd-bricks"             : "2.0.*",
+        "agmakonts/stl"                    : "2.0.*"
     },
-    "autoload": {
-        "psr-4": {"AdamiecRadek\\": "src/"}
+    "autoload"         : {
+        "psr-4": {
+            "AdamiecRadek\\DDDBricksZF2\\": "src/"
+        }
     }
 }
