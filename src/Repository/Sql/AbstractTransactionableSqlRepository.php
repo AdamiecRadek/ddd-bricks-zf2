@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author: Radek Adamiec
  * Date: 22.05.15
@@ -7,27 +8,22 @@
 
 namespace AdamiecRadek\DDDBricksZF2\Repository\Sql;
 
-
 use AGmakonts\DddBricks\Repository\TransactionableRepository;
 
 /**
- * Class AbstractTransactionableSqlRepository
- *
- * @package AdamiecRadek\Repository\Sql
+ * Class AbstractTransactionableSqlRepository.
  */
 abstract class AbstractTransactionableSqlRepository extends AbstractSqlRepository implements TransactionableRepository
 {
-
-
     /**
-     * Determines whether or not transaction is enabled
+     * Determines whether or not transaction is enabled.
      *
      * @var bool
      */
-    protected $transactionStarted = FALSE;
+    protected $transactionStarted = false;
 
     /**
-     * Begin transaction
+     * Begin transaction.
      *
      * @return mixed
      */
@@ -35,22 +31,22 @@ abstract class AbstractTransactionableSqlRepository extends AbstractSqlRepositor
     {
         try {
             $this->dbAdapter->getDriver()->getConnection()->beginTransaction();
-            $this->transactionStarted = TRUE;
+            $this->transactionStarted = true;
         } catch (\Exception $exception) {
             // silence
         }
     }
 
     /**
-     * Finish transaction and commit changes
+     * Finish transaction and commit changes.
      *
      * @return mixed
      */
     public function commitTransaction()
     {
-        if (TRUE === $this->transactionStarted) {
+        if (true === $this->transactionStarted) {
             $this->dbAdapter->getDriver()->getConnection()->commit();
-            $this->transactionStarted = FALSE;
+            $this->transactionStarted = false;
         }
     }
 
@@ -61,9 +57,9 @@ abstract class AbstractTransactionableSqlRepository extends AbstractSqlRepositor
      */
     public function rollbackTransaction()
     {
-        if (TRUE === $this->transactionStarted) {
+        if (true === $this->transactionStarted) {
             $this->dbAdapter->getDriver()->getConnection()->rollback();
-            $this->transactionStarted = FALSE;
+            $this->transactionStarted = false;
         }
     }
 }

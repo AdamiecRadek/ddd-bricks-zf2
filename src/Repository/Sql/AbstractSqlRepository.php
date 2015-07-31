@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author: Radek Adamiec
  * Date: 22.05.15
@@ -6,7 +7,6 @@
  */
 
 namespace AdamiecRadek\DDDBricksZF2\Repository\Sql;
-
 
 use AdamiecRadek\DDDBricksZF2\Repository\Exception\NoRecordFoundException;
 use AdamiecRadek\DDDBricksZF2\Repository\Sql\Exception\InvalidConfigProvidedException;
@@ -17,9 +17,7 @@ use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Sql;
 
 /**
- * Class AbstractSqlRepository
- *
- * @package AdamiecRadek\Repository\Sql
+ * Class AbstractSqlRepository.
  */
 abstract class AbstractSqlRepository extends AbstractRepository
 {
@@ -27,7 +25,6 @@ abstract class AbstractSqlRepository extends AbstractRepository
      * @var \Zend\Db\Adapter\Adapter
      */
     protected $dbAdapter;
-
 
     /**
      * @var \Zend\Db\Sql\Sql
@@ -37,10 +34,9 @@ abstract class AbstractSqlRepository extends AbstractRepository
     /**
      * @param array $config
      */
-    protected function __construct(array $config = NULL)
+    protected function __construct(array $config = null)
     {
-        if (FALSE === $this->checkConfigForConstructor($config)) {
-
+        if (false === $this->checkConfigForConstructor($config)) {
             throw new InvalidConfigProvidedException();
         }
         $this->setDatabaseProperties($config);
@@ -50,19 +46,20 @@ abstract class AbstractSqlRepository extends AbstractRepository
      * @param       $where
      * @param array $options
      *
-     * @return \SplObjectStorage
      * @throws NoRecordFoundException
+     *
+     * @return \SplObjectStorage
      */
-    protected function getEntitiesByWhere($where = NULL, array $options = [])
+    protected function getEntitiesByWhere($where = null, array $options = array())
     {
         $select = $this->getSelect();
 
-        if (NULL !== $where) {
+        if (null !== $where) {
             $select->where($where);
         }
 
         $statement = $this->getSql()->prepareStatementForSqlObject($select);
-        $result    = $statement->execute(
+        $result = $statement->execute(
             $options
         );
 
@@ -71,7 +68,6 @@ abstract class AbstractSqlRepository extends AbstractRepository
         }
         $entitiesSplObjectStorage = $this->processResult($result);
         $entitiesSplObjectStorage->rewind();
-
 
         return $entitiesSplObjectStorage;
     }
@@ -82,22 +78,22 @@ abstract class AbstractSqlRepository extends AbstractRepository
      *
      * @return bool
      */
-    protected function checkIfEntityExists($where = NULL, array $options = [])
+    protected function checkIfEntityExists($where = null, array $options = array())
     {
         $select = $this->getSelectForEntityCheck();
-        if (NULL !== $where) {
+        if (null !== $where) {
             $select->where($where);
         }
 
         $statement = $this->getSql()->prepareStatementForSqlObject($select);
-        $result    = $statement->execute(
+        $result = $statement->execute(
             $options
         );
 
         if ($result->count() === 0) {
-            return FALSE;
+            return false;
         } else {
-            return TRUE;
+            return true;
         }
     }
 
@@ -133,14 +129,14 @@ abstract class AbstractSqlRepository extends AbstractRepository
      */
     protected function checkConfigForConstructor(array $config = array())
     {
-        return (TRUE === (count($config) > 0) &&
-            TRUE === $config[0] instanceof Adapter);
+        return (true === (count($config) > 0) &&
+            true === $config[0] instanceof Adapter);
     }
 
     /**
      * @param array $config
      */
-    protected function setDatabaseProperties(array $config = NULL)
+    protected function setDatabaseProperties(array $config = null)
     {
         $this->dbAdapter = $config[0];
 
